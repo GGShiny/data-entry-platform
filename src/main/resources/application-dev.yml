@@ -1,0 +1,91 @@
+##  开发环境配置信息  ##
+
+spring:
+  # mysql数据库配置
+  datasource:
+    url: jdbc:mysql://192.168.1.188:3306/zkwg_data?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: szwg2018
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 连接池信息配置
+    druid:
+      #初始化大小
+      initialSize: 5
+      #最小值
+      minIdle: 5
+      #最大值
+      maxActive: 20
+      #最大等待时间，配置获取连接等待超时，时间单位都是毫秒ms
+      maxWait: 60000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接
+      timeBetweenEvictionRunsMillis: 60000
+      #配置一个连接在池中最小生存的时间
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 配置StatFilter
+      web-stat-filter:
+        #默认为false，设置为true启动
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      #配置StatViewServlet
+      stat-view-servlet:
+        url-pattern: "/druid/*"
+        #允许那些ip
+        allow: 127.0.0.1,192.168.1.101
+        login-username: root
+        login-password: root
+        #禁止那些ip
+        deny: 192.168.1.102
+        #是否可以重置
+        reset-enable: true
+        #启用
+        enabled: true
+  data:
+    # elasticsearch配置
+    elasticsearch:
+
+    # mongodb数据库配置
+    mongodb:
+      host: 192.168.1.196
+      port: 26000
+      username: normal
+      password: isiteam
+      database: admin
+  #redis数据库配置
+  redis:
+    #Redis数据库索引(默认是0)
+    database:
+    #Redis服务器地址
+    host:
+    #Redis服务器连接端口
+    port:
+    #Redis服务器连接密码
+    password:
+    #连接池设置
+    pool:
+      #连接池最大连接数(使用负值表示没有限制)
+      max-active: 200
+      #连接池最大阻塞等待时间(使用负值表示没有限制)
+      max-wait: -1
+      #连接池最大空闲连接
+      max-idle: 10
+      #连接池最小空闲连接
+      min-idle: 0
+    #连接超时时间
+    timeout: 1000
+
+
+
+
+# swagger配置
+swagger:
+  enabled: true

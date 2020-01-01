@@ -1,0 +1,15 @@
+server:
+  # 服务端口
+  port: 8001
+
+spring:
+  application:
+    # 服务名称
+    name: data-entry-platform
+  profiles:
+   # 分区配置，进行不同环境的切换
+    active: dev
+
+mybatis:
+  # 指定mapper文件路径
+  mapper-locations: classpath:/mapper/*Mapper.xml

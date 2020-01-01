@@ -1,0 +1,15 @@
+server:
+  # ����˿ں�
+  port: 8001
+
+spring:
+  application:
+    # ��������
+    name: data-entry-platform
+  profiles:
+   # �������ã����в�ͬ�����л�
+    active: dev
+
+mybatis:
+  # ָ��mapper�ļ�·��
+  mapper-locations: classpath:/mapper/*Mapper.xml
